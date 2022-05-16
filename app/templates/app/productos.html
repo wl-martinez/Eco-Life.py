@@ -43,113 +43,30 @@
 </aside>
 <br>
 <!------ PRODUCTOS ---------->
+
 <main class="col-md-9">
   <div class="row">
+    {% for p in productos %}
     <div class="col-md-4">
       <figure class="card card-product-grid">
         <div class="img-wrap"> 
-                <img src="{% static 'app/img/basado1.png' %}" class="img-fluid">
+          {% if p.imagen %}
+                <img src="{{ p.imagen.url }}" class="img-fluid">
+          {% endif %}
           <a class="btn-overlay" href="#" data-toggle="modal" data-target="#product_view"><i class="fa fa-search-plus"></i> Ver</a>
         </div> <!-- img-wrap.// -->
         <figcaption class="info-wrap">
           <div class="fix-height">
-            <a href="#" class="title">Product name goes here just for demo item</a>
+            <a href="#" class="title">{{ p.nombre | capfirst }}</a>
             <div class="price-wrap mt-2">
-              <span class="price">$1280</span>
+              <span class="price">{{p.precio | capfirst }}</span>
             </div> <!-- price-wrap.// -->
           </div>
           <a href="#" class="btn btn-block btn-primary">Añadir al carro </a>	
         </figcaption>
       </figure>
     </div> <!-- col.// -->
-    <div class="col-md-4">
-      <figure class="card card-product-grid">
-        <div class="img-wrap"> 
-                  <img src="{% static 'app/img/basado2.png' %}" class="img-fluid">
-          <a class="btn-overlay" href="#" data-toggle="modal" data-target="#product_view" ><i class="fa fa-search-plus"></i> Ver</a>
-        </div> <!-- img-wrap.// -->
-        <figcaption class="info-wrap">
-          <div class="fix-height">
-            <a href="#" class="title">Product name goes here just for demo item</a>
-            <div class="price-wrap mt-2">
-              <span class="price">$1280</span>
-            </div> <!-- price-wrap.// -->
-          </div>
-          <a href="#" class="btn btn-block btn-primary">Añadir al carro </a>	
-        </figcaption>
-      </figure>
-    </div> <!-- col.// -->
-  
-    <div class="col-md-4">
-      <figure class="card card-product-grid">
-        <div class="img-wrap"> 
-                <img src="{% static 'app/img/basado1.png' %}" class="img-fluid">
-          <a class="btn-overlay" href="#" data-toggle="modal" data-target="#product_view"><i class="fa fa-search-plus"></i> Ver</a>
-        </div> <!-- img-wrap.// -->
-        <figcaption class="info-wrap">
-          <div class="fix-height">
-            <a href="#" class="title">Product name goes here just for demo item</a>
-            <div class="price-wrap mt-2">
-              <span class="price">$1280</span>
-            </div> <!-- price-wrap.// -->
-          </div>
-          <a href="#" class="btn btn-block btn-primary">Añadir al carro </a>	
-        </figcaption>
-      </figure>
-    </div> <!-- col.// -->
-  
-    <div class="col-md-4">
-      <figure class="card card-product-grid">
-        <div class="img-wrap"> 
-                <img src="{% static 'app/img/basado2.png' %}" class="img-fluid">
-          <a class="btn-overlay" href="#" data-toggle="modal" data-target="#product_view"><i class="fa fa-search-plus"></i> Ver</a>
-        </div> <!-- img-wrap.// -->
-        <figcaption class="info-wrap">
-          <div class="fix-height">
-            <a href="#" class="title">Product name goes here just for demo item</a>
-            <div class="price-wrap mt-2">
-              <span class="price">$1280</span>
-            </div> <!-- price-wrap.// -->
-          </div>
-          <a href="#" class="btn btn-block btn-primary">Añadir al carro </a>	
-        </figcaption>
-      </figure>
-    </div> <!-- col.// -->
-  
-    <div class="col-md-4">
-      <figure class="card card-product-grid">
-        <div class="img-wrap"> 
-                <img src="{% static 'app/img/basado1.png' %}" class="img-fluid">
-          <a class="btn-overlay" href="#" data-toggle="modal" data-target="#product_view"><i class="fa fa-search-plus"></i> Ver</a>
-        </div> <!-- img-wrap.// -->
-        <figcaption class="info-wrap">
-          <div class="fix-height">
-            <a href="#" class="title">Product name goes here just for demo item</a>
-            <div class="price-wrap mt-2">
-              <span class="price">$1280</span>
-            </div> <!-- price-wrap.// -->
-          </div>
-          <a href="#" class="btn btn-block btn-primary">Añadir al carro </a>	
-        </figcaption>
-      </figure>
-    </div> <!-- col.// -->
-    <div class="col-md-4">
-      <figure class="card card-product-grid">
-        <div class="img-wrap"> 
-          <img src="{% static 'app/img/basado2.png' %}" class="img-fluid">
-          <a class="btn-overlay" href="#" data-toggle="modal" data-target="#product_view"><i class="fa fa-search-plus"></i> Ver</a>
-        </div> <!-- img-wrap.// -->
-        <figcaption class="info-wrap">
-          <div class="fix-height">
-            <a href="#" class="title">Product name goes here just for demo item</a>
-            <div class="price-wrap mt-2">
-              <span class="price">$1280</span>
-            </div> <!-- price-wrap.// -->
-          </div>
-          <a href="#" class="btn btn-block btn-primary">Añadir al carro </a>	
-        </figcaption>
-      </figure>
-    </div>
+    {% endfor %}
   </div>  
   <!-- VISUALIZADOR-->
   <div class="modal fade product_view" id="product_view">
@@ -158,14 +75,16 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6 product_img">
-                        <img src="{% static 'app/img/basado1.png' %}" class="img-responsive">
+                      {% if p.imagen %}
+                        <img src="{{ p.imagen.url }}" class="img-responsive">
+                      {% endif %}
                     </div>
                     <div class="col-md-6 product_content">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        <h3 class="cost"><span class="glyphicon glyphicon-usd"></span> 75.00 </h3>
+                        <p>{{p.descripcion | capfirst }}</p>
+                        <h3 class="cost"><span class="glyphicon glyphicon-usd"></span>{{p.precio}}</h3>
                         <div class="space-ten"></div>
                         <div class="btn-ground">
-                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carro</button>
                         </div>
                     </div>
                 </div>
