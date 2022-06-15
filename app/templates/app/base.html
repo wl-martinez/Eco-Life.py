@@ -33,7 +33,7 @@
 
     <div class="jumbotron">
         <div class="container-fluid">
-       <a class="text-center" href="index.html">
+       <a class="text-center" href="{% url 'index' %}">
            <img class="img-circle center" alt="Cinque Terre" src= "{% static 'app/img/LogoCentro.png' %}">
        </a>
          </div>
@@ -50,13 +50,13 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="productos.html">Productos</a></li>
+        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'productos' %}">Productos</a></li>
         <li><a href="fundaciones.html">Fundaciones</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="ingresar.html"><span class="glyphicon glyphicon-user"></span> Ingresar</a></li>
-        <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carro</a></li>
+        <li><a href="{% url 'ingresar' %}"><span class="glyphicon glyphicon-user"></span> Ingresar</a></li>
+        <li><a href="{% url 'carrito' %}"><span class="glyphicon glyphicon-shopping-cart"></span> Carro</a></li>
       </ul>
     </div>
   </div>
